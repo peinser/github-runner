@@ -1,3 +1,5 @@
+[![Build & Distribute GitHub Actions Runner Container](https://github.com/peinser/github-runner/actions/workflows/build.yaml/badge.svg)](https://github.com/peinser/github-runner/actions/workflows/build.yaml)
+
 # GitHub Actions Runner
 
 This repository contains the definition of Peinser's self-hosted GitHub Actions Runner, which
