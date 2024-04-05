@@ -28,4 +28,4 @@ to download from `harbor.peinser.com`.
 ## TODO
 
 - [ ] Do not use GitHub PAT. Use GitHub App instead.
-- [ ] Versioning.
+- [ ] Versioning of releases. Including builds to Harbor.
