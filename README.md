@@ -23,3 +23,9 @@ helm install --update "${INSTALLATION_NAME}" \
 
 Note that, before configuring, a image pull secret has to be provided in order for the namespace to be able
 to download from `harbor.peinser.com`.
+
+
+## TODO
+
+- [ ] Do not use GitHub PAT. Use GitHub App instead.
+- [ ] Versioning.
