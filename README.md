@@ -7,7 +7,7 @@ contains serveral utilities that we use frequently.
 
 ## Helm
 The `values.yaml` is provided to ease the installation of the GitHub runner on our Kubernetes platform. In
-particular, it relates to the installation processed described ![here](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/quickstart-for-actions-runner-controller). For completeness,
+particular, it relates to the installation processed described [here](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/quickstart-for-actions-runner-controller). For completeness,
 we list the instructions that have to be executed in order to install this particular runner.
 
 ```bash
