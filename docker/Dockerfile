@@ -9,7 +9,8 @@ COPY --from=kaniko /kaniko/docker-credential-ecr-login /bin/docker-credential-ec
 COPY --from=kaniko /kaniko/docker-credential-acr-env /bin/docker-credential-acr-env
 
 RUN sudo apt update -y && \
-    sudo apt install -y zip yq jq git gettext-base wget curl && \
+    sudo apt install -y zip jq git gettext-base wget curl && \
+    sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 && \
     curl -sSLf "$(curl -sSLf https://api.github.com/repos/tomwright/dasel/releases/latest | grep browser_download_url | grep linux_amd64 | grep -v .gz | cut -d\" -f 4)" -L -o dasel && chmod +x dasel && \
     sudo mv ./dasel /usr/local/bin/dasel && \
     sudo apt-get clean
