@@ -15,7 +15,7 @@ RUN sudo apt-get update -y && \
     sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
 
 RUN sudo apt update -y && \
-    sudo apt install -y build-essential zip jq git gettext-base wget curl python3 golang-go && \
+    sudo apt install -y build-essential zip rsync jq git gettext-base wget curl python3 golang-go && \
     sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 && sudo chmod a+x /usr/local/bin/yq && \
     curl -sSLf "$(curl -sSLf https://api.github.com/repos/tomwright/dasel/releases/latest | grep browser_download_url | grep linux_amd64 | grep -v .gz | cut -d\" -f 4)" -L -o dasel && chmod +x dasel && \
     sudo mv ./dasel /usr/local/bin/dasel && \
