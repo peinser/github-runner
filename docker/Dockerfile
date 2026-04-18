@@ -25,6 +25,8 @@ RUN sudo apt update -y && \
 ARG SOPS_VERSION=3.12.2
 ARG AGE_VERSION=1.3.1
 ARG COSIGN_VERSION=3.0.6
+ARG CRANE_VERSION=0.21.5
+
 RUN set -eux; \
     sudo curl -fsSL -o /usr/local/bin/sops \
       "https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64" && \
@@ -33,4 +35,7 @@ RUN set -eux; \
       | sudo tar -xz -C /usr/local/bin --strip-components=1 age/age age/age-keygen; \
     sudo curl -fsSL -o /usr/local/bin/cosign \
       "https://github.com/sigstore/cosign/releases/download/v${COSIGN_VERSION}/cosign-linux-amd64" && \
-    sudo chmod +x /usr/local/bin/cosign
+    sudo chmod +x /usr/local/bin/cosign && \
+    curl -sL "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_x86_64.tar.gz" \
+      | sudo tar -xz -C /usr/local/bin crane && \
+    sudo chmod +x /usr/local/bin/crane
