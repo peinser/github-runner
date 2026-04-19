@@ -7,6 +7,8 @@ COPY --from=kaniko /kaniko/docker-credential-gcr /bin/docker-credential-gcr
 COPY --from=kaniko /kaniko/docker-credential-ecr-login /bin/docker-credential-ecr-login
 COPY --from=kaniko /kaniko/docker-credential-acr-env /bin/docker-credential-acr-env
 
+USER root
+
 RUN set -eux; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
@@ -77,3 +79,5 @@ RUN set -eux; \
         "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_${GOCRANE_ARCH}.tar.gz" \
         | tar -xz -C /usr/local/bin crane \
     && chmod +x /usr/local/bin/crane
+
+USER runner
