@@ -11,7 +11,7 @@ COPY --from=kaniko /kaniko/docker-credential-acr-env /bin/docker-credential-acr-
 RUN sudo apt-get update -y && \
     sudo apt-get install -y curl ca-certificates gnupg && \
     curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && \
-    sudo apt-get install -y nodejs && \
+    sudo apt-get install -y nodejs bsdextrautils && \
     sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
 
 RUN sudo apt update -y && \
