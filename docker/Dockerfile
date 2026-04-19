@@ -28,14 +28,16 @@ ARG COSIGN_VERSION=3.0.6
 ARG CRANE_VERSION=0.21.5
 
 RUN set -eux; \
+    ARCH="$(dpkg --print-architecture)"; \
+    CRANE_ARCH="$([ "${ARCH}" = "amd64" ] && echo "x86_64" || echo "${ARCH}")"; \
     sudo curl -fsSL -o /usr/local/bin/sops \
-      "https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64" && \
+      "https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.${ARCH}" && \
     sudo chmod +x /usr/local/bin/sops; \
-    curl -fsSL "https://github.com/FiloSottile/age/releases/download/v${AGE_VERSION}/age-v${AGE_VERSION}-linux-amd64.tar.gz" \
+    curl -fsSL "https://github.com/FiloSottile/age/releases/download/v${AGE_VERSION}/age-v${AGE_VERSION}-linux-${ARCH}.tar.gz" \
       | sudo tar -xz -C /usr/local/bin --strip-components=1 age/age age/age-keygen; \
     sudo curl -fsSL -o /usr/local/bin/cosign \
-      "https://github.com/sigstore/cosign/releases/download/v${COSIGN_VERSION}/cosign-linux-amd64" && \
+      "https://github.com/sigstore/cosign/releases/download/v${COSIGN_VERSION}/cosign-linux-${ARCH}" && \
     sudo chmod +x /usr/local/bin/cosign && \
-    curl -sL "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_x86_64.tar.gz" \
+    curl -sL "https://github.com/google/go-containerregistry/releases/download/v${CRANE_VERSION}/go-containerregistry_Linux_${CRANE_ARCH}.tar.gz" \
       | sudo tar -xz -C /usr/local/bin crane && \
     sudo chmod +x /usr/local/bin/crane
