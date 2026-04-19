@@ -23,6 +23,9 @@ RUN set -eux; \
         gettext-base \
         wget \
         python3 \
+        python3-pip \
+        python3-venv \
+        python-is-python3 \
         golang-go \
         bsdextrautils \
     && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
