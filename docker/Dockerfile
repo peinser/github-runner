@@ -83,4 +83,6 @@ RUN set -eux; \
         | tar -xz -C /usr/local/bin crane \
     && chmod +x /usr/local/bin/crane
 
+RUN curl -fsSL https://proton.me/download/pass-cli/install.sh | bash
+
 USER runner
