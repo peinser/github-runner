@@ -10,6 +10,9 @@ on:
     paths:
     - docker/Dockerfile
 
+permissions:
+  contents: read
+
 jobs:
 
   package:
